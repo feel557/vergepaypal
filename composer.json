@@ -1,0 +1,79 @@
+{
+    "name": "laravel/laravel",
+    "description": "The Laravel Framework.",
+    "keywords": ["framework", "laravel"],
+    "license": "MIT",
+    "type": "project",
+    "minimum-stability": "dev",
+"prefer-stable" : true,
+"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/lesichkovm/laravel-advanced-route.git"
+        },
+		{
+            "type": "vcs",
+            "url": "https://github.com/Twispay/hostedpage-php-sdk.git"
+        }
+    ],
+    "require": {
+        "php": ">=5.6.4",
+        "barryvdh/laravel-dompdf": "^0.8.0",
+        "bogardo/mailgun": "^5.0",
+        "braintree/braintree_php": "3.25.0",
+        "cristianpontes/zoho-crm-client-php": "^1.6",
+        "docusign/esign-client": "^3.0",
+        "guzzlehttp/psr7": "^1.4",
+        "laravel/framework": "5.4.*",
+        "laravel/tinker": "~1.0",
+        "lesichkovm/laravel-advanced-route": "^1.0",
+        "mailgun/mailgun-php": "^2.4",
+        "paypal/rest-api-sdk-php": "*",
+        "php-http/curl-client": "^1.7",
+        "php-http/guzzle6-adapter": "^1.1",
+        "rocket-code/shopify": "^2.0",
+        "stripe/stripe-php": "^5.6",
+        "tjphippen/docusign": "0.3.*@dev",
+        "twilio/sdk": "^5.18",
+		"Twispay/hostedpage-php-sdk": "*"
+    },
+    "require-dev": {
+        "fzaninotto/faker": "~1.4",
+        "mockery/mockery": "0.9.*",
+        "phpunit/phpunit": "~5.7"
+    },
+    "autoload": {
+        "classmap": [
+            "database"
+        ],
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "post-root-package-install": [
+            "/opt/php71/bin/php -r \"file_exists('.env') || copy('.env.example', '.env');\""
+        ],
+        "post-create-project-cmd": [
+            "/opt/php71/bin/php artisan key:generate"
+        ],
+        "post-install-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postInstall",
+            "/opt/php71/bin/php artisan optimize"
+        ],
+        "post-update-cmd": [
+            "Illuminate\\Foundation\\ComposerScripts::postUpdate",
+            "/opt/php71/bin/php artisan optimize"
+        ]
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    }
+}
